@@ -17,14 +17,33 @@
   <div class="pokedex">
     <div class="selected-container">
       <div class="header">
-        <h2>{{ pokemonToShow.name.toUpperCase() }}</h2>
+        {{ pokemonToShow.name.toUpperCase() }}
       </div>
       <div class="pokedex-info">
         <img :src="pokemonToShow.img" alt="Placeholder Pokémon">
         <p>Main type: {{ pokemonToShow.types[0].name }}</p>
       </div>
       <div class="chart">
-        <Radar :data="{labels: pokemonToShow.radarData.labels, datasets: pokemonToShow.radarData.datasets}"  />
+        <Radar 
+          :data="{
+            labels: pokemonToShow.radarData.labels, 
+            datasets: pokemonToShow.radarData.datasets
+          }" 
+          :options="{
+            legend: {
+              display: false
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+              r: {
+                  ticks: {
+                      display: false // Hides the labels in the middel (numbers)
+                  }
+              }
+            }
+          }"
+        />
       </div>
     </div>
   </div>
@@ -124,7 +143,7 @@ export default {
                           datasets: [
                             {
                               label: "Stats",
-                              data: radarData
+                              data: radarData,
                             }
                           ]
                         }
@@ -261,7 +280,7 @@ input[type="text"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 60px;
+  margin: 10px;
   flex-grow: 1;
   height: 50px;
   width: 40vw;
@@ -303,29 +322,29 @@ input[type="text"] {
   box-shadow: 0px 0px 10px 2px rgb(55, 107, 150);
   border: 2px solid rgb(253, 253, 253);
   border-radius: 10px;
-  color: white;
   padding: 10px;
   text-align: center;
-  
+  font-family: 'PokedexFont';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  /* width: 13vw; */
+  height: 3vh;
 }
+
 @font-face {
   font-family: 'PokedexFont';
   src: url('./PokemonGb-RAeo.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-.header h2 {
+/* .header h2 {
   display: flex;;
   justify-content: center; 
   align-items: center;
-  font-family: 'PokedexFont';
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  color: rgb(255, 255, 255);
-  width: 12vw;
-  height: 3vh;
-}
+  
+} */
 .pokedex-info {
   display: flex;
   flex-direction: column;
