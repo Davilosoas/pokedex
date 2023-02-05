@@ -38,7 +38,7 @@
             scales: {
               r: {
                   ticks: {
-                      display: false // Hides the labels in the middel (numbers)
+                      display: false 
                   }
               }
             }
@@ -369,6 +369,7 @@ input[type="text"] {
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
+  margin-bottom: 10px;
   color: rgb(148, 168, 179);
 
 }
