@@ -103,10 +103,10 @@ export default {
     },
     created() {
         axios
-            .get("https://pokeapi.co/api/v2/pokemon?limit=100000")
+            .get("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then((response) => {
             const pokemons = response.data.results;
-            this.pokemons = pokemons.map((pokemon) => {
+            this.pokemons = pokemons.map(async (pokemon) => {
                 return axios
                     .get(pokemon.url)
                     .then((res) => {
